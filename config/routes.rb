@@ -10,5 +10,8 @@ Rails.application.routes.draw do
       delete 'sign_out', to: 'sessions#destroy'
     end
   end
+
+  resources :chatrooms, only: [:index, :create]
+
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

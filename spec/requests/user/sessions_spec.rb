@@ -11,7 +11,7 @@ RSpec.describe 'User::Sessions' do
 
     context 'with the incorrect password' do
       let(:password) { 'invalid password' }
-      
+
       before { request }
 
       it_behaves_like 'error_response', 401, 'Invalid Email or password.'

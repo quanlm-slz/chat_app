@@ -23,7 +23,11 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  let(:user) { create(:user) }
+  let(:user) { build(:user) }
+
+  describe 'association' do
+    it { expect(user).to have_many(:chatrooms).dependent(:destroy) }
+  end
 
   describe 'validation' do
     it { expect(user).to validate_uniqueness_of(:username).case_insensitive }

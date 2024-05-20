@@ -12,10 +12,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_240_520_040_252) do
+ActiveRecord::Schema[7.1].define(version: 20_240_520_090_335) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'pgcrypto'
   enable_extension 'plpgsql'
+
+  create_table 'chatrooms', id: :uuid, default: -> { 'gen_random_uuid()' }, force: :cascade do |t|
+    t.string 'name', limit: 50, null: false
+    t.string 'invite_code', limit: 50, null: false
+    t.uuid 'owner_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['owner_id'], name: 'index_chatrooms_on_owner_id'
+  end
 
   create_table 'denylists', force: :cascade do |t|
     t.string 'jti', default: '', null: false

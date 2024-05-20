@@ -30,6 +30,8 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   attr_reader :token
 
+  has_many :chatrooms, foreign_key: :owner_id, dependent: :destroy, inverse_of: :owner
+
   def on_jwt_dispatch(token, _payload)
     @token = "Bearer #{token}"
   end

@@ -14,6 +14,8 @@ gem "bootsnap", require: false
 gem "devise"
 gem "devise-jwt"
 gem "active_model_serializers"
+gem "kaminari"
+gem "pundit"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
