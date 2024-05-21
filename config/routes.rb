@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :chatrooms, only: [:index, :create]
+  resources :chatrooms, only: %i[index create destroy]
 
   get 'up' => 'rails/health#show', as: :rails_health_check
 end

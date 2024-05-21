@@ -18,7 +18,6 @@
 FactoryBot.define do
   factory :chatroom do
     name { Faker::Name.name }
-    invite_code { Faker::Lorem.characters(number: 10) }
     owner factory: :user
   end
 end

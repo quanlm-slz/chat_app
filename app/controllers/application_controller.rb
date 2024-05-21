@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
+  include Pundit::Authorization
   include ErrorHandlers
   include ResponseHandlers
   include ParamsHandlers

@@ -5,10 +5,20 @@ module ErrorHandlers
 
   included do
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid_response
+    rescue_from ActionController::ParameterMissing, with: :param_missing_response
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_response
   end
 
   def record_invalid_response(error)
     error_response(422, error.record.errors.full_messages)
+  end
+
+  def record_not_found_response(_error)
+    error_response(404, 'Record not found')
+  end
+
+  def param_missing_response(error)
+    error_response(400, error.message)
   end
 
   private
