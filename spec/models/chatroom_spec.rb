@@ -22,5 +22,7 @@ RSpec.describe Chatroom do
 
   describe 'association' do
     it { expect(chatroom).to belong_to(:owner).class_name(User.name) }
+    it { expect(chatroom).to have_many(:participants).dependent(:destroy) }
+    it { expect(chatroom).to have_many(:users).through(:participants) }
   end
 end

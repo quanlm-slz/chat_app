@@ -17,9 +17,13 @@
 #
 class Chatroom < ApplicationRecord
   belongs_to :owner, class_name: 'User'
+
+  has_many :participants, dependent: :destroy
+  has_many :users, through: :participants
+
   attribute :invite_code, default: -> { SecureRandom.hex(10) }
 
   private
 
-  attr_accessor :invite_code
+  attr_writer :invite_code
 end

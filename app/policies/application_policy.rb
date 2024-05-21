@@ -8,12 +8,6 @@ class ApplicationPolicy
     @record = record
   end
 
-  def public_send(method_name)
-    return true if method_name =~ /\?$/ && !defined?(method_name)
-
-    super
-  end
-
   class Scope
     def initialize(user, scope)
       @user = user

@@ -35,4 +35,8 @@ class User < ApplicationRecord
   def on_jwt_dispatch(token, _payload)
     @token = "Bearer #{token}"
   end
+
+  def belong_to? chatroom
+    Boolean(chatroom.participants.where(user_id: id)) 
+  end
 end
