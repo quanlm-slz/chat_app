@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :chatrooms, only: %i[index create destroy] do
-    resources :participants, only: %i[index], controller: 'chatrooms/participants'
+    resources :participants, only: %i[index create destroy], controller: 'chatrooms/participants'
   end
 
   get 'up' => 'rails/health#show', as: :rails_health_check

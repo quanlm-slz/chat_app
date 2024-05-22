@@ -16,14 +16,6 @@
 #  index_chatrooms_on_invite_code  (invite_code)
 #  index_chatrooms_on_owner_id     (owner_id)
 #
-require 'rails_helper'
-
-RSpec.describe Chatroom do
-  let(:chatroom) { build(:chatroom) }
-
-  describe 'association' do
-    it { expect(chatroom).to belong_to(:owner).class_name(User.name) }
-    it { expect(chatroom).to have_many(:participants).dependent(:destroy) }
-    it { expect(chatroom).to have_many(:users).through(:participants) }
-  end
+class ChatroomSerializer < ActiveModel::Serializer
+  attributes :id, :name, :invite_code, :participants_count
 end

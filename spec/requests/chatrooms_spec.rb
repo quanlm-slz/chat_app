@@ -76,7 +76,7 @@ RSpec.describe 'Chatrooms' do
       include_context 'when user signed in'
       before { request }
 
-      it_behaves_like 'error_response', 404, 'Record not found'
+      it_behaves_like 'error_response', 404, 'Record not found.'
     end
   end
 end

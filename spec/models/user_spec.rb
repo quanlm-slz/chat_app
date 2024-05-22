@@ -27,6 +27,8 @@ RSpec.describe User do
 
   describe 'association' do
     it { expect(user).to have_many(:chatrooms).dependent(:destroy) }
+    it { expect(user).to have_one(:participant).dependent(:destroy) }
+    it { expect(user).to have_one(:chatroom).through(:participant) }
   end
 
   describe 'validation' do

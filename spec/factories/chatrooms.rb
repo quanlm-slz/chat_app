@@ -13,7 +13,8 @@
 #
 # Indexes
 #
-#  index_chatrooms_on_owner_id  (owner_id)
+#  index_chatrooms_on_invite_code  (invite_code)
+#  index_chatrooms_on_owner_id     (owner_id)
 #
 FactoryBot.define do
   factory :chatroom do

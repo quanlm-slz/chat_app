@@ -16,12 +16,6 @@
 #  index_participants_on_user_id                  (user_id)
 #  index_participants_on_user_id_and_chatroom_id  (user_id,chatroom_id) UNIQUE
 #
-class Participant < ApplicationRecord
-  belongs_to :user
-  belongs_to :chatroom
-
-  validates :user_id, uniqueness: { scope: :chatroom_id }
-
-  delegate :username, to: :user, allow_nil: true
-  delegate :email, to: :user, allow_nil: true
+class ParticipantSerializer < ActiveModel::Serializer
+  attributes :id, :username, :email
 end

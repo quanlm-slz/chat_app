@@ -31,12 +31,14 @@ class User < ApplicationRecord
   attr_reader :token
 
   has_many :chatrooms, foreign_key: :owner_id, dependent: :destroy, inverse_of: :owner
+  has_one :participant, dependent: :destroy
+  has_one :chatroom, through: :participant
 
   def on_jwt_dispatch(token, _payload)
     @token = "Bearer #{token}"
   end
 
-  def belong_to? chatroom
-    Boolean(chatroom.participants.where(user_id: id)) 
+  def belong_to?(chatroom)
+    Boolean(chatroom.participants.where(user_id: id))
   end
 end

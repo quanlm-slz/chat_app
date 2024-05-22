@@ -13,7 +13,8 @@
 #
 # Indexes
 #
-#  index_chatrooms_on_owner_id  (owner_id)
+#  index_chatrooms_on_invite_code  (invite_code)
+#  index_chatrooms_on_owner_id     (owner_id)
 #
 class Chatroom < ApplicationRecord
   belongs_to :owner, class_name: 'User'
@@ -22,6 +23,8 @@ class Chatroom < ApplicationRecord
   has_many :users, through: :participants
 
   attribute :invite_code, default: -> { SecureRandom.hex(10) }
+
+  delegate :count, to: :participants, prefix: true
 
   private
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: participants
@@ -10,8 +12,9 @@
 #
 # Indexes
 #
-#  index_participants_on_chatroom_id  (chatroom_id)
-#  index_participants_on_user_id      (user_id)
+#  index_participants_on_chatroom_id              (chatroom_id)
+#  index_participants_on_user_id                  (user_id)
+#  index_participants_on_user_id_and_chatroom_id  (user_id,chatroom_id) UNIQUE
 #
 FactoryBot.define do
   factory :participant do

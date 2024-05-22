@@ -30,3 +30,5 @@ Metrics/BlockLength:
 # RSpec
 RSpec/ExampleLength:
   Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
